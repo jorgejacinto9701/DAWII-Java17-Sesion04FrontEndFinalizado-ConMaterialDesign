@@ -11,13 +11,14 @@ import { CrudDocenteComponent } from './components/crud-docente/crud-docente.com
 import { AppMaterialModule } from './app.material.module';
 import { CrudDocenteAddComponent } from './components/crud-docente-add/crud-docente-add.component';
 import { CrudDocenteUpdateComponent } from './components/crud-docente-update/crud-docente-update.component';
-
+import { AddModalidadComponent } from './components/add-modalidad/add-modalidad.component';
 @NgModule({
   declarations: [
     AppComponent,
     CrudDocenteComponent,
     CrudDocenteAddComponent,
-    CrudDocenteUpdateComponent
+    CrudDocenteUpdateComponent,
+    AddModalidadComponent
   ],
   imports: [
     BrowserModule,
