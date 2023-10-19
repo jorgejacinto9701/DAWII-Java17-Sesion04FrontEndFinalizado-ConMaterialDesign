@@ -4,46 +4,111 @@
             <span>Registra Modalidad</span>    
           </mat-toolbar>  
     </div>
+    <form id="idFormMolidad" [formGroup]="formsRegistra">
     <div  class="row">
             <mat-form-field class="col-md-4">
               <mat-label>Nombre</mat-label>
-              <input  matInput [(ngModel)] ="objModalidad.nombre" >
+              <input  matInput [(ngModel)] ="objModalidad.nombre"  formControlName="validaNombre" >
+              <mat-hint style="color: red"  *ngIf="formsRegistra.controls.validaNombre.touched">
+                    <span *ngIf="formsRegistra.controls.validaNombre.hasError('required')">
+                        El nombre es requerido                        
+                    </span>
+                    <span *ngIf="formsRegistra.controls.validaNombre.hasError('pattern')">
+                        El nombre es de 3 a 30 caracteres                        
+                    </span>
+              </mat-hint>
             </mat-form-field>
             <mat-form-field class="col-md-4">
               <mat-label>Número de Hombres</mat-label>
-              <input  matInput [(ngModel)] ="objModalidad.numHombres">
+              <input  matInput [(ngModel)] ="objModalidad.numHombres" formControlName="validaNumHombres">
+              <mat-hint style="color: red"  *ngIf="formsRegistra.controls.validaNumHombres.touched">
+                <span *ngIf="formsRegistra.controls.validaNumHombres.hasError('required')">
+                    El número de hombres es requerido                        
+                </span>
+                <span *ngIf="formsRegistra.controls.validaNumHombres.hasError('min')">
+                    El número de hombres es de 0 a 5      
+                </span>
+                <span *ngIf="formsRegistra.controls.validaNumHombres.hasError('max')">
+                    El número de hombres es de 0 a 5      
+                </span>
+              </mat-hint>
             </mat-form-field>
             <mat-form-field class="col-md-4">
               <mat-label>Número de Mujeres</mat-label>
-              <input  matInput  [(ngModel)] ="objModalidad.numMujeres">
+              <input  matInput  [(ngModel)] ="objModalidad.numMujeres" formControlName="validaNumMujeres">
+              <mat-hint style="color: red"  *ngIf="formsRegistra.controls.validaNumMujeres.touched">
+                <span *ngIf="formsRegistra.controls.validaNumMujeres.hasError('required')">
+                    El número de mujeres es requerido                        
+                </span>
+                <span *ngIf="formsRegistra.controls.validaNumMujeres.hasError('min')">
+                    El número de mujeres es de 0 a 5      
+                </span>
+                <span *ngIf="formsRegistra.controls.validaNumMujeres.hasError('max')">
+                    El número de mujeres es de 0 a 5      
+                </span>
+              </mat-hint>
             </mat-form-field>
      </div>   
      <div  class="row">
             <mat-form-field class="col-md-4">
               <mat-label>Edad Mínima</mat-label>
-              <input  matInput [(ngModel)] ="objModalidad.edadMinima" >
+              <input  matInput [(ngModel)] ="objModalidad.edadMinima"  formControlName="validaEdadMinima">
+              <mat-hint style="color: red"  *ngIf="formsRegistra.controls.validaEdadMinima.touched">
+                <span *ngIf="formsRegistra.controls.validaEdadMinima.hasError('required')">
+                    La Edad mínima requerido                        
+                </span>
+                <span *ngIf="formsRegistra.controls.validaEdadMinima.hasError('min')">
+                    La Edad mínima es de 18 a 40           
+                </span>
+                <span *ngIf="formsRegistra.controls.validaEdadMinima.hasError('max')">
+                    La Edad mínima es de 18 a 40       
+                </span>
+              </mat-hint>
             </mat-form-field>
             <mat-form-field class="col-md-4">
               <mat-label>Edad Máxima</mat-label>
-              <input  matInput [(ngModel)] ="objModalidad.edadMaxima">
+              <input  matInput [(ngModel)] ="objModalidad.edadMaxima" formControlName="validaEdadMaxima">
+              <mat-hint style="color: red"  *ngIf="formsRegistra.controls.validaEdadMaxima.touched">
+                <span *ngIf="formsRegistra.controls.validaEdadMaxima.hasError('required')">
+                    La edad máxima es requerido                 
+                </span>
+                <span *ngIf="formsRegistra.controls.validaEdadMaxima.hasError('min')">
+                    La Edad máxima es de 18 a 40           
+                </span>
+                <span *ngIf="formsRegistra.controls.validaEdadMaxima.hasError('max')">
+                    La Edad máxima es de 18 a 40       
+                </span>
+              </mat-hint>
             </mat-form-field>
             <mat-form-field class="col-md-4">
               <mat-label>Sede</mat-label>
-              <input matInput [(ngModel)] ="objModalidad.sede">
+              <input matInput [(ngModel)] ="objModalidad.sede" formControlName="validaSede">
+              <mat-hint style="color: red"  *ngIf="formsRegistra.controls.validaSede.touched">
+                <span *ngIf="formsRegistra.controls.validaSede.hasError('required')">
+                    La sede es requerido                 
+                </span>
+  
+              </mat-hint>
             </mat-form-field>
      </div>
      <div  class="row">     
             <mat-form-field class="col-md-4">
               <mat-label>Deporte</mat-label>
-              <mat-select [(ngModel)] ="objModalidad.deporte!.idDeporte">
+              <mat-select [(ngModel)] ="objModalidad.deporte!.idDeporte"  formControlName="validaDeporte">
                 <mat-option value="-1"> [Seleccione] </mat-option>
                 <ng-container *ngFor="let x of lstDeportes">
                   <mat-option value="{{x.idDeporte}}">{{x.nombre}}</mat-option>
                 </ng-container>
               </mat-select>
+              <mat-hint style="color: red"  *ngIf="formsRegistra.controls.validaDeporte.touched">
+                <span *ngIf="formsRegistra.controls.validaDeporte.hasError('min')">
+                    El deporte es requerido
+                </span>
+              </mat-hint>
             </mat-form-field> 
       </div>           
       <div  class="row">
-            <button mat-raised-button type="submit" color="primary" (click)="inserta()" >Registra</button>
+            <button mat-raised-button type="submit" color="primary" (click)="inserta()" [disabled]="formsRegistra.invalid" >Registra</button>
       </div>
+    </form>
 </div>
