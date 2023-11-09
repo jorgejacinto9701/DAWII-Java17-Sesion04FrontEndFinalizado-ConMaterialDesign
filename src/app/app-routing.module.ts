@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CrudDocenteComponent } from './components/crud-docente/crud-docente.component';
 import { AddModalidadComponent } from './components/add-modalidad/add-modalidad.component';
+import { ConsultaDocenteComponent } from './components/consulta-docente/consulta-docente.component';
 
 const routes: Routes = [
   {path:"crudDocente", component:CrudDocenteComponent },
-  {path:"addModalidad", component: AddModalidadComponent }
+  {path:"addModalidad", component: AddModalidadComponent },
+  {path:"consultaDocente", component: ConsultaDocenteComponent }
 ];
 
 
